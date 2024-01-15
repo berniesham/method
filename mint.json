@@ -15,11 +15,13 @@
   "favicon": "/favicon.png",
   "colors": {
     "primary": "#98d331",
-    "light": "#033351",
+    "light": "#98d331",
     "dark": "#98d331"
+
   
   
   },
+
 
   "navigation": [
     {
