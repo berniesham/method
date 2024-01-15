@@ -24,9 +24,7 @@
 
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      
     }
  
   ],
