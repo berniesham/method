@@ -5,7 +5,7 @@ description: 'IMPACT+ Methodology'
 
 
 
-### **Primary data used in the evaluation**
+## **Primary data used in the evaluation**
 
 | Data point | Source |  |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ description: 'IMPACT+ Methodology'
 | Volumes (impressions, completed views, media spent) | Report |  |
 |  |  |  |
 
-*Evaluating the amount of data transferred*
+## Evaluating the amount of data transferred
 
 **Display**
 
@@ -30,30 +30,30 @@ description: 'IMPACT+ Methodology'
 
 </aside>
 
-Video
+**Video**
 
 Some players preload the entire video file, but most systems stream on demand, so the files are downloaded in chunks.
 
 In this case, we use the quartile statistics to evaluate the amount of data transferred.
 
-<aside>
-🗒️ As quartiles measure the amount of video that has been delivered and videos are preloaded in chunks, we consider that each 25% of the video played means that the next 25% have already been downloaded. So when the player hits the video_start event, we consider that 25% of the file has been downloaded, and when it reaches 75%, the whole file has been downloaded.
+<Tip>
+As quartiles measure the amount of video that has been delivered and videos are preloaded in chunks, we consider that each 25% of the video played means that the next 25% have already been downloaded. So when the player hits the video_start event, we consider that 25% of the file has been downloaded, and when it reaches 75%, the whole file has been downloaded.
 
 For videos shorter than 15s, we consider that the video is fully downloaded when it starts playing (video_start event).
 
-</aside>
+</Tip>
 
-*Evaluating the device use time*
+## Evaluating the device use time
 
-Display
+**Display**
 
 Display creatives have a fixed creative view time. This average data has been evaluated from different data benchmarks about viewability, integrating in the calculation that most of the display ads are not delivered full screen. 
 
-Video
+**Video**
 
 The device use time for video creatives is the length of time during which the video is being played. We use the quartile stats and consider that the users stop viewing the video at the quartiles, so a user who has reached the 50% quartile but not the 75% is considered to have seen 50% of the duration of the video.
 
-### Calculating the electricity consumption from these data points
+## Determining the electricity consumption from these data points
 
 There are three distinct elements when measuring the environmental impact of a digital service in a Lifecycle Assessment:
 
@@ -63,43 +63,43 @@ There are three distinct elements when measuring the environmental impact of a d
 
 For creative delivery, we consider these 3 tiers in scope. 
 
-*User Device*
+### User Device
 
 **The device** which displays/plays the ad.
 
 The energy consumption of the device is evaluated using an average kWh/second of usage per device type. We use different constants for smartphones, tablets, PCs and IPTVs. Our algorithm evaluates the time the ad is being displayed on the device and then converts the value to an energy consumption.
 
-<aside>
-🗒️ We consider the energy of the device usage is spent on the display of the ad.
+<Tip>
+We consider the energy of the device usage is spent on the display of the ad.
 
-</aside>
+</Tip>
 
-<aside>
-🗒️ We consider that the device draws the energy from the outlet at the time the ad is being displayed.
+<Tip>
+We consider that the device draws the energy from the outlet at the time the ad is being displayed.
 
-</aside>
+</Tip>
 
-*Data Centres*
+### Data Centres
 
 **The data centre** which hosts and sends the audio, video or still images called assets.
 
 The energy consumption of the data centre is evaluated using an average kWh/Byte value. This value was estimated by dividing the energy consumption of a data centre by the amount of bytes transferred. It thus includes the servers, network equipments and the cooling systems. Our algorithm first evaluates the amount of data transferred before converting it to an energy consumption. We take the assumption that all data centres have the same kWh/Byte constant. 
 
-*Network*
+### Network
 
-**The network,** which transmits the data from the data centre to the end user’s local network.
+**The network**, which transmits the data from the data centre to the end user’s local network.
 
 The energy consumption of the network is evaluated using an average kWh/Byte value for each type of network. This value was estimated by calculating the average consumption of all the equipments used to transfer data for each individual network type, divided by the amount of bytes transferred. It includes the network equipments, amplifiers, cell towers, etc. At the moment we use one constant for wired (DSL, cable, optic fibre) networks  and another one for wireless (3G/4G/5G) networks.
 
 <aside>
-💡 This approach could be changed in the future if a new scientific consensus is reached (one recent research paper suggests that the relationship between electricity consumed and data transferred is not fully linear).
+This approach could be changed in the future if a new scientific consensus is reached (one recent research paper suggests that the relationship between electricity consumed and data transferred is not fully linear).
 
 </aside>
 
-### 
 
-<aside>
-🗒️ A typical broadcasting system will use a CDN to provide faster response times. The CDN is a network of servers that delivers the assets efficiently by being closer to the end user.
+
+<Tip>
+A typical broadcasting system will use a CDN to provide faster response times. The CDN is a network of servers that delivers the assets efficiently by being closer to the end user.
 
 In a typical system, there is a main data centre which holds the assets, and each server in the CDN will fetch from the main data centre on demand and keep a cached version of the file. The servers from the CDN then delivers the cached file to the end user.
 
@@ -107,10 +107,10 @@ We consider that in a CDN configuration, the main consumption during broadcast c
 
 We also consider that the CDN is located in the same country as the end user.
 
-</aside>
+</Tip>
 
 <aside>
-🗒️ We use data from Electricity maps to get carbon intensity of electricity on a wide range of countries.
+We use data from Electricity maps to get carbon intensity of electricity on a wide range of countries.
 
 We average the values over a day and use the per day average in our algorithm.
 
@@ -120,6 +120,6 @@ We use a “world average” for any impressions delivered in countries when we 
 
 </aside>
 
-### Calculate end-user devices embodied emissions
+## Allocating end-user devices embodied emissions
 
 To calculate the embodied emissions due to the end-user device, we consider the total emissions due to manufacturing, transport, and end-of-life of these devices, for each device type (smartphone, desktop, etc.). We then divide this by the total time spent on the device by the user during its lifetime to get a gram of CO2eq per second (gCO2eq/s) value. Finally, we allocate the emissions based on the creative view time.
