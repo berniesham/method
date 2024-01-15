@@ -1,0 +1,57 @@
+---
+title: Supply Path Scope
+description: 'IMPACT+ Methodology'
+---
+
+# IMPACT+ Methodology - Supply Path #
+
+
+# Supply path impacts evaluation
+
+### **Primary data used in the evaluation**
+
+| Data point | Source |
+| --- | --- |
+| Domain | Report |
+| Volume of Impressions | Report |
+| Country of delivery | Report |
+| Connection type | Report or default value |
+| Date of delivery | Report |
+
+### Modelling the supply graph
+
+Using publicly available information from Supply actors (ads.txt, sellers.json, ad modules loaded on publisher pages, partnerships, supported formats) and private information, we build a Supply Graph Model. This graph consists of “publishers” that uses “triggers” to create bid requests that are sent to “SSPs” and finally received by “DSPs”. This graph is parameterized with throttling, bid-rate and win-rate information from our partners or that we estimate using statistical methods. We can then trace the life of bid requests and bid answers for each domain, how they are exchanged between each partner, and, thus, estimate the GHG emissions of the supply path. 
+
+From this model, we create a database that maps each domain to a kWh/impression.
+
+This database is updated every month. Then, we use this database to compute kWh then gCO2eq for each impression. 
+
+### Evaluate the electricity consumption from the supply graph
+
+In scope for this evaluation : 
+
+- Servers & Data centers
+- Networks
+
+From the publisher, we follow each path, applying thresholds and link probabilities. For each node in the graph, we compute a total probability of receiving bid requests and emitting bid requests.
+
+To limit the running time of our graph traversal, we limit the number of SSP Seats in all given supply chains to 6. We also stop traversing the graph if the probabilities of emitting a bid request is lower than 1/100.
+
+We consider that a placed or winning bid goes down to the last SSP Seat before the Publisher (i.e. there is no server to client data transfer). In the future, we might use the s-chain information if available in SSP / DSP to determine more precisely the supply paths used.
+
+From this graph, we compute : 
+
+- The average number of network requests from the device (publisher) to a server (ad requests)
+- the average number of requests from server to server (bid requests & bid responses)
+
+*Networks*
+
+For each category of requests, we combine the number of requests by an average payload (the request weight) and the consumption factor for each connection type used (kWh/Byte), collected from the report for the device to server requests, or considered as optic fibers for server to servers requests. 
+
+*Servers & Data Centres*
+
+We combine the total number of requests by an average payload and the consumption factor for Data Centres (kWh/Byte).
+
+### Converting electricity consumption in GHG emissions.
+
+To calculate the carbon dioxide equivalent (CO2eq) emissions emitted during the campaign, we convert the energy consumption in kilowatt-hours (kWh) to carbon emissions in kilograms (kg) of CO2eq using the carbon intensity constant. We use carbon intensity of the country of the end user’s device for this evaluation.
