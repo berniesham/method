@@ -26,7 +26,7 @@ This database is updated every month. Then, we use this database to compute kWh 
 
 In scope for this evaluation : 
 
-- **Servers & Data centers**
+- **Servers & Data centres**
 - **Networks**
 
 From the publisher, we follow each path, applying thresholds and link probabilities. For each node in the graph, we compute a total probability of receiving bid requests and emitting bid requests.
@@ -40,13 +40,15 @@ From this graph, we compute :
 - The average number of network requests from the device (publisher) to a server (ad requests)
 - the average number of requests from server to server (bid requests & bid responses)
 
+### Servers & Data Centres
+
+We combine the total number of requests by an average payload and the consumption factor for Data Centres (kWh/Byte).
+
 ### Networks
 
 For each category of requests, we combine the number of requests by an average payload (the request weight) and the consumption factor for each connection type used (kWh/Byte), collected from the report for the device to server requests, or considered as optic fibers for server to servers requests. 
 
-### Servers & Data Centres
 
-We combine the total number of requests by an average payload and the consumption factor for Data Centres (kWh/Byte).
 
 ## Converting electricity consumption in GHG emissions.
 
