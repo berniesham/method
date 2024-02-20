@@ -1,4 +1,5 @@
-{
+
+ {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Documentation",
   "logo": {
@@ -13,6 +14,7 @@
 },
 
   "favicon": "/favicon.png",
+  
   "colors": {
     "primary": "#98d331",
     "light": "#98d331",
@@ -35,4 +37,5 @@
   "footerSocials": {
  
   }
-}
+ }
+
