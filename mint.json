@@ -3,8 +3,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Documentation",
   "logo": {
-    "dark": "/logo/logo-impactplus.svg",
-    "light": "/logo/logo-impactplus.svg"
+    "dark": "/logo/ImpactPlus_Logo_White.svg",
+    "light": "/logo/ImpactPlus_Logo_White.svg"
     
   },
 
@@ -13,7 +13,7 @@
   "isHidden": true
 },
 
-  "favicon": "/favicon.png",
+  "favicon": "/favicon_new.png",
   
   "colors": {
     "primary": "#98d331",
