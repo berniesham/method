@@ -4,23 +4,23 @@
   "name": "Documentation",
   "logo": {
     "dark": "/logo/ImpactPlus_Logo_White.svg",
-    "light": "/logo/ImpactPlus_Logo_White.svg"
+    "light": "/logo/ImpactPlus_Logo_TintedBlack.svg"
     
   },
 
 "modeToggle": {
-  "default": "dark",
+  "default": "light",
   "isHidden": true
 },
 
   "favicon": "/favicon_new.svg",
   
   "colors": {
-    "primary": "#98d331",
-    "light": "#98d331",
-    "dark": "#98d331",
+    "primary": "#000000",
+    "light": "#595861",
+    "dark": "#10C284",
     "background": {
-      "light": "#033351",
+      "light": "#FBFBFC",
       "dark": "#033351"
     }
   },
